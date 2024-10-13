@@ -17,7 +17,7 @@ const _layout = () => {
         <Tabs.Screen
             name="explore"
             options={{
-                title: "Explore"
+                title: "High-Alert for Cardiac Arrest Individuals"
             }}
         />
         <Tabs.Screen
