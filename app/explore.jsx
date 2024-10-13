@@ -1,12 +1,19 @@
-import { View, Text, StyleSheet, Image, Dimensions } from 'react-native';
+import { View, Text, StyleSheet, Image, Dimensions, TouchableOpacity } from 'react-native';
 import React from 'react';
+import { useNavigation } from '@react-navigation/native';
 
 const screenWidth = Dimensions.get('window').width;
 
 const Explore = () => {
+  const navigation = useNavigation();
+
+  const handlePress = () => {
+    navigation.navigate('index'); // Navigate to the home tab
+  };
+
   return (
     <View style={styles.container}>
-      <View style={styles.box}>
+      <TouchableOpacity style={styles.box} onPress={handlePress}>
         <Image source={require('../assets/images/grandma1.jpg')} style={styles.image} />
         <View style={styles.textContainer}>
           <Text style={styles.boxText}>At-Risk Individual #1</Text>
@@ -15,8 +22,8 @@ const Explore = () => {
             <View style={[styles.riskBar, { width: '90%' }]}></View>
           </View>
         </View>
-      </View>
-      <View style={styles.box}>
+      </TouchableOpacity>
+      <TouchableOpacity style={styles.box} onPress={handlePress}>
         <Image source={require('../assets/images/grandpa1.png')} style={styles.image} />
         <View style={styles.textContainer}>
           <Text style={styles.boxText}>At-Risk Individual #2</Text>
@@ -25,8 +32,8 @@ const Explore = () => {
             <View style={[styles.riskBar, { width: '60%' }]}></View>
           </View>
         </View>
-      </View>
-      <View style={styles.box}>
+      </TouchableOpacity>
+      <TouchableOpacity style={styles.box} onPress={handlePress}>
         <Image source={require('../assets/images/man1.png')} style={styles.image} />
         <View style={styles.textContainer}>
           <Text style={styles.boxText}>At-Risk Individual #3</Text>
@@ -35,7 +42,7 @@ const Explore = () => {
             <View style={[styles.riskBar, { width: '30%' }]}></View>
           </View>
         </View>
-      </View>
+      </TouchableOpacity>
     </View>
   );
 }
