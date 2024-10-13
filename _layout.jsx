@@ -11,7 +11,7 @@ const _layout = () => {
         <Tabs.Screen
             name="index"
             options={{
-                title: "Home"
+                title: "Map"
             }}
         />
         <Tabs.Screen
