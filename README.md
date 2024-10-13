@@ -48,16 +48,3 @@ Join our community of developers creating universal apps.
 
 - [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
 - [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
-
-
-
-                  _
-                _(_)_                          wWWWw   _
-    @@@@       (_)@(_)   vVVVv     _     @@@@  (___) _(_)_
-   @@()@@ wWWWw  (_)\    (___)   _(_)_  @@()@@   Y  (_)@(_)
-    @@@@  (___)     `|/    Y    (_)@(_)  @@@@   \|/   (_)\
-     /      Y       \|    \|/    /(_)    \|      |/      |
-   \ |     \ |/       | / \ | /  \|/       |/    \|      \|/
-   \\|//   \\|///  \\\|//\\\|/// \|///  \\\|//  \\|//  \\\|// 
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  Hackers: Christopher Lam, Karson Shin, Megan Pham, Sara Duan
