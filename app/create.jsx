@@ -4,22 +4,25 @@ import React from 'react'
 const Create = () => {
   const cards = [
     {
-      image: require('../assets/images/Heart-Beating-PNG-File.png'), 
-      title: 'Pulse Monitor',
-      subtitle: 'Health Tracking',
+      image: require('../assets/images/grandma1.jpg'), 
+      title: 'At-Risk Individual #1',
+      subtitle: 'Risk Level: High',
       progress: 0.7,
+      riskColor: '#FF4C4C',
     },
     {
-      image: require('../assets/images/blood-pressure.png'),
-      title: 'Blood Pressure',
-      subtitle: 'Health Tracking',
+      image: require('../assets/images/grandpa1.png'),
+      title: 'At-Risk Individual #2',
+      subtitle: 'Risk Level: Medium',
       progress: 0.5,
+      riskColor: '#FFBF00',
     },
     {
-      image: require('../assets/images/siren.png'),
-      title: 'Report Incident',
-      subtitle: 'Emergency',
+      image: require('../assets/images/man1.png'),
+      title: 'At-Risk Individual #3',
+      subtitle: 'Risk Level: Low',
       progress: 0.2,
+      riskColor: '#4CAF50',
     },
   ];
 
@@ -32,7 +35,7 @@ const Create = () => {
             <Text style={styles.title}>{card.title}</Text>
             <Text style={styles.subtitle}>{card.subtitle}</Text>
             <View style={styles.progressBar}>
-              <View style={[styles.progress, { width: `${card.progress * 100}%` }]} />
+              <View style={[styles.progress, { width: `${card.progress * 100}%`, backgroundColor: card.riskColor }]} />
             </View>
           </View>
         </View>
@@ -84,7 +87,6 @@ const styles = StyleSheet.create({
   },
   progress: {
     height: '100%',
-    backgroundColor: '#94B9F6',
     borderRadius: 5,
   },
 })

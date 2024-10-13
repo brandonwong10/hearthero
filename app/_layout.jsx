@@ -23,7 +23,7 @@ const _layout = () => {
         <Tabs.Screen
             name="create"
             options={{
-                title: "Create"
+                title: "Resources"
             }}
         />
         <Tabs.Screen

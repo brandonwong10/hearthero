@@ -1,104 +1,94 @@
-import { View, Text, StyleSheet, Image, Dimensions } from 'react-native';
-import React from 'react';
-
-const screenWidth = Dimensions.get('window').width;
+import { View, Text, ScrollView, Image, StyleSheet } from 'react-native'
+import React from 'react'
 
 const Explore = () => {
+  const cards = [
+    {
+      image: require('../assets/images/grandma1.jpg'), 
+      title: 'At-Risk Individual #1',
+      subtitle: 'Risk Level: High',
+      progress: 0.7,
+      riskColor: '#FF4C4C',
+    },
+    {
+      image: require('../assets/images/grandpa1.png'),
+      title: 'At-Risk Individual #2',
+      subtitle: 'Risk Level: Medium',
+      progress: 0.5,
+      riskColor: '#FFBF00',
+    },
+    {
+      image: require('../assets/images/man1.png'),
+      title: 'At-Risk Individual #3',
+      subtitle: 'Risk Level: Low',
+      progress: 0.2,
+      riskColor: '#4CAF50',
+    },
+  ];
+
   return (
-    <View style={styles.container}>
-      <View style={styles.box}>
-        <Image source={require('../assets/images/grandma1.jpg')} style={styles.image} />
-        <View style={styles.textContainer}>
-          <Text style={styles.boxText}>At-Risk Individual #1</Text>
-          <Text style={styles.riskText}>Risk Level: High</Text>
-          <View style={[styles.riskBarContainer, { marginTop: 10 }]}>
-            <View style={[styles.riskBar, { width: '90%' }]}></View>
+    <ScrollView contentContainerStyle={styles.container}>
+      {cards.map((card, index) => (
+        <View key={index} style={styles.card}>
+          <Image source={card.image} style={styles.image} />
+          <View style={styles.cardText}>
+            <Text style={styles.title}>{card.title}</Text>
+            <Text style={styles.subtitle}>{card.subtitle}</Text>
+            <View style={styles.progressBar}>
+              <View style={[styles.progress, { width: `${card.progress * 100}%`, backgroundColor: card.riskColor }]} />
+            </View>
           </View>
         </View>
-      </View>
-      <View style={styles.box}>
-        <Image source={require('../assets/images/grandpa1.png')} style={styles.image} />
-        <View style={styles.textContainer}>
-          <Text style={styles.boxText}>At-Risk Individual #2</Text>
-          <Text style={styles.riskText}>Risk Level: Medium</Text>
-          <View style={[styles.riskBarContainer, { marginTop: 10 }]}>
-            <View style={[styles.riskBar, { width: '60%' }]}></View>
-          </View>
-        </View>
-      </View>
-      <View style={styles.box}>
-        <Image source={require('../assets/images/man1.png')} style={styles.image} />
-        <View style={styles.textContainer}>
-          <Text style={styles.boxText}>At-Risk Individual #3</Text>
-          <Text style={styles.riskText}>Risk Level: Low</Text>
-          <View style={[styles.riskBarContainer, { marginTop: 10 }]}>
-            <View style={[styles.riskBar, { width: '30%' }]}></View>
-          </View>
-        </View>
-      </View>
-    </View>
-  );
+      ))}
+    </ScrollView>
+  )
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    justifyContent: 'flex-start', // Align items to the top
-    alignItems: 'center',
-    backgroundColor: '#F8F3F1', // Darker background color
-    paddingTop: 20, // Add padding to move the boxes down a bit
+    paddingHorizontal: 20,
+    paddingVertical: 10,
+    backgroundColor: '#F8F3F1',
   },
-  box: {
-    width: screenWidth * 0.9, // 90% of screen width
-    height: 150,
-    backgroundColor: '#FFFFFF', // Changed color to white
-    marginVertical: 10, // Vertical margin
-    shadowColor: '#000', // Shadow color
-    shadowOffset: { width: 0, height: 10 }, // Longer shadow offset
-    shadowOpacity: 0.3, // Reduced initial shadow opacity
-    shadowRadius: 10, // Increased shadow radius
-    elevation: 10, // Increased elevation for Android
-    borderRadius: 20, // Added rounded edges
-    flexDirection: 'row', // Arrange items in a row
-    alignItems: 'center', // Center items vertically
-    paddingHorizontal: 20, // Horizontal padding
+  card: {
+    flexDirection: 'row',
+    backgroundColor: '#fff',
+    borderRadius: 10,
+    marginBottom: 20,
+    padding: 35,
+    shadowColor: '#000',
+    shadowOpacity: 0.1,
+    shadowRadius: 10,
+    elevation: 2,
   },
   image: {
-    width: 80, // Adjusted image width
-    height: 80, // Adjusted image height
-    marginRight: 20, // Space between image and text
-    borderRadius: 10, // Rounded edges for images
-    resizeMode: 'contain', // Ensure the image fits within the area
+    width: 50,
+    height: 50,
+    marginRight: 15,
+    resizeMode:"contain",
   },
-  textContainer: {
+  cardText: {
     flex: 1,
-    flexDirection: 'column',
-    justifyContent: 'center',
   },
-  boxText: {
-    color: '#000000',
-    fontSize: 24,
-    fontWeight: 'bold', // Bold text
-    fontFamily: 'Arial', // Nicer font
-    marginTop: -10, // Move text up
-  },
-  riskText: {
-    color: '#000000',
+  title: {
     fontSize: 18,
-    fontFamily: 'Arial', // Nicer font
+    fontWeight: 'bold',
+    marginBottom: 5,
   },
-  riskBarContainer: {
-    width: '100%',
-    height: 10,
-    backgroundColor: '#ddd', // Background color for the bar container
+  subtitle: {
+    fontSize: 14,
+    color: '#888',
+    marginBottom: 10,
+  },
+  progressBar: {
+    height: 5,
+    backgroundColor: '#ddd',
     borderRadius: 5,
-    marginTop: 10, // Adjusted margin to move the bar down
   },
-  riskBar: {
+  progress: {
     height: '100%',
-    backgroundColor: 'red', // Red color for the filling bar
     borderRadius: 5,
   },
-});
+})
 
 export default Explore;
