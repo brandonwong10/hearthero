@@ -1,84 +1,59 @@
-import { View, Text, ScrollView, Image, StyleSheet, TouchableOpacity, Animated } from 'react-native';
-import React, { useEffect, useState, useRef } from 'react';
-import { useNavigation } from '@react-navigation/native';
+import { View, Text, ScrollView, Image, StyleSheet } from 'react-native'
+import React from 'react'
 
 const Explore = () => {
-  const navigation = useNavigation();
-
-  const handlePress = () => {
-    navigation.navigate('index'); // Navigate to the home tab
-  };
-
-  const initialCards = [
+  const cards = [
     {
       image: require('../assets/images/grandma1.jpg'), 
       title: 'At-Risk Individual #1',
       subtitle: 'Risk Level: High',
-      progress: new Animated.Value(0.7),
+      progress: 0.7,
       riskColor: '#FF4C4C',
     },
     {
       image: require('../assets/images/grandpa1.png'),
       title: 'At-Risk Individual #2',
       subtitle: 'Risk Level: Medium',
-      progress: new Animated.Value(0.5),
+      progress: 0.5,
       riskColor: '#FFBF00',
     },
     {
       image: require('../assets/images/man1.png'),
       title: 'At-Risk Individual #3',
       subtitle: 'Risk Level: Low',
-      progress: new Animated.Value(0.2),
+      progress: 0.2,
       riskColor: '#4CAF50',
     },
   ];
 
-  const [cards, setCards] = useState(initialCards);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCards(prevCards => 
-        prevCards.map(card => {
-          const newProgress = Math.max(0, Math.min(1, card.progress._value + (Math.random() - 0.5) * 0.1));
-          Animated.timing(card.progress, {
-            toValue: newProgress,
-            duration: 1000,
-            useNativeDriver: false,
-          }).start();
-          return card;
-        })
-      );
-    }, 2000); // Update every 2 seconds
-
-    return () => clearInterval(interval);
-  }, []);
-
   return (
-    <ScrollView contentContainerStyle={styles.container}>
-      {cards.map((card, index) => (
-        <TouchableOpacity key={index} style={styles.card} onPress={handlePress}>
-          <Image source={card.image} style={styles.image} />
-          <View style={styles.cardText}>
-            <Text style={styles.title}>{card.title}</Text>
-            <Text style={styles.subtitle}>{card.subtitle}</Text>
-            <View style={styles.progressBar}>
-              <Animated.View style={[styles.progress, { width: card.progress.interpolate({
-                inputRange: [0, 1],
-                outputRange: ['0%', '100%']
-              }), backgroundColor: card.riskColor }]} />
+    <View style={styles.container}> {/* Use View as a root component */}
+      <ScrollView contentContainerStyle={styles.scrollContainer}>
+        {cards.map((card, index) => (
+          <View key={index} style={styles.card}>
+            <Image source={card.image} style={styles.image} />
+            <View style={styles.cardText}>
+              <Text style={styles.title}>{card.title}</Text>
+              <Text style={styles.subtitle}>{card.subtitle}</Text>
+              <View style={styles.progressBar}>
+                <View style={[styles.progress, { width: `${card.progress * 100}%`, backgroundColor: card.riskColor }]} />
+              </View>
             </View>
           </View>
-        </TouchableOpacity>
-      ))}
-    </ScrollView>
-  );
+        ))}
+      </ScrollView>
+    </View>
+  )
 }
 
 const styles = StyleSheet.create({
   container: {
+    flex: 1, // Make sure the container fills the entire screen
+    backgroundColor: '#94B9F6',
+  },
+  scrollContainer: {
     paddingHorizontal: 20,
     paddingVertical: 10,
-    backgroundColor: '#F8F3F1',
   },
   card: {
     flexDirection: 'row',
@@ -95,7 +70,7 @@ const styles = StyleSheet.create({
     width: 50,
     height: 50,
     marginRight: 15,
-    resizeMode: 'contain',
+    resizeMode: "contain",
   },
   cardText: {
     flex: 1,
@@ -119,6 +94,6 @@ const styles = StyleSheet.create({
     height: '100%',
     borderRadius: 5,
   },
-});
+})
 
 export default Explore;
