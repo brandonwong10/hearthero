@@ -18,3 +18,13 @@ web-build/
 
 expo-env.d.ts
 # @end expo-cli
+/.yarn
+/flask-server
+*.json
+*.json
+package-lock.json
+*.json
+*.mjs
+*.json
+*.json
+package-lock.json
