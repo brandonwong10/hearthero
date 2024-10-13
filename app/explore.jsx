@@ -1,24 +1,19 @@
 import { View, Text, StyleSheet, Image } from 'react-native';
 import React from 'react';
 
-// Import images from assets
-import grandma1 from '../assets/images/grandma1.jpg';
-import grandpa1 from '../assets/images/grandpa1.jpg';
-import man1 from '../assets/images/man1.jpg';
-
 const Explore = () => {
   return (
     <View style={styles.container}>
       <View style={styles.box}>
-        <Image source={grandma1} style={styles.image} />
+        <Image source={require('../assets/images/grandma1.jpg')} style={styles.image} />
         <Text style={styles.boxText}>At-Risk Individual #1</Text>
       </View>
       <View style={styles.box}>
-        <Image source={grandpa1} style={styles.image} />
+        <Image source={require('../assets/images/grandpa1.png')} style={styles.image} />
         <Text style={styles.boxText}>At-Risk Individual #2</Text>
       </View>
       <View style={styles.box}>
-        <Image source={man1} style={styles.image} />
+        <Image source={require('../assets/images/man1.png')} style={styles.image} />
         <Text style={styles.boxText}>At-Risk Individual #3</Text>
       </View>
     </View>
