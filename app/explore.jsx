@@ -27,28 +27,33 @@ const Explore = () => {
   ];
 
   return (
-    <ScrollView contentContainerStyle={styles.container}>
-      {cards.map((card, index) => (
-        <View key={index} style={styles.card}>
-          <Image source={card.image} style={styles.image} />
-          <View style={styles.cardText}>
-            <Text style={styles.title}>{card.title}</Text>
-            <Text style={styles.subtitle}>{card.subtitle}</Text>
-            <View style={styles.progressBar}>
-              <View style={[styles.progress, { width: `${card.progress * 100}%`, backgroundColor: card.riskColor }]} />
+    <View style={styles.container}> {/* Use View as a root component */}
+      <ScrollView contentContainerStyle={styles.scrollContainer}>
+        {cards.map((card, index) => (
+          <View key={index} style={styles.card}>
+            <Image source={card.image} style={styles.image} />
+            <View style={styles.cardText}>
+              <Text style={styles.title}>{card.title}</Text>
+              <Text style={styles.subtitle}>{card.subtitle}</Text>
+              <View style={styles.progressBar}>
+                <View style={[styles.progress, { width: `${card.progress * 100}%`, backgroundColor: card.riskColor }]} />
+              </View>
             </View>
           </View>
-        </View>
-      ))}
-    </ScrollView>
+        ))}
+      </ScrollView>
+    </View>
   )
 }
 
 const styles = StyleSheet.create({
   container: {
+    flex: 1, // Make sure the container fills the entire screen
+    backgroundColor: '#94B9F6',
+  },
+  scrollContainer: {
     paddingHorizontal: 20,
     paddingVertical: 10,
-    backgroundColor: '#F8F3F1',
   },
   card: {
     flexDirection: 'row',
@@ -65,7 +70,7 @@ const styles = StyleSheet.create({
     width: 50,
     height: 50,
     marginRight: 15,
-    resizeMode:"contain",
+    resizeMode: "contain",
   },
   cardText: {
     flex: 1,
