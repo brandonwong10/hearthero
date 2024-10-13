@@ -18,6 +18,8 @@ const _layout = () => {
             name="explore"
             options={{
                 title: "Individuals"
+
+
             }}
         />
         <Tabs.Screen
