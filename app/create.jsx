@@ -7,7 +7,7 @@ const ChartExample = () => {
 
   // Bezier Line Chart Data
   const lineChartData = {
-    labels: ['9:00am', '10:00am', '11:00am', '12:00pm', '1:00pm', '2:00pm'],
+    labels: ['9am', '10am', '11am', '12pm', '1pm', '2pm'],
     datasets: [
       {
         data: [90, 125, 88, 78, 99, 80],
@@ -20,12 +20,12 @@ const ChartExample = () => {
   // Progress Ring Data
   const progressChartData = {
     labels: ['Walk', 'Jog', 'Bike'], // optional
-    data: [0.4, 0.6, 0.9]
+    data: [0.6, 0.8, 0.4]
   };
 
   // Bar Chart Data
   const barChartData = {
-    labels: ['9:00am', '10:00am', '11:00am', '12:00pm', '1:00pm', '2:00pm'],
+    labels: ['9am', '10am', '11am', '12pm', '1pm', '2pm'],
     datasets: [
       {
         data: [1, 4, 2, 8, 9, 3]
@@ -35,7 +35,7 @@ const ChartExample = () => {
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
-      <Text style={styles.title}>Blood Pressure Chart (bmp)</Text>
+      <Text style={styles.title}>Blood Pressure Chart (BPM)</Text>
       <LineChart
         data={lineChartData}
         width={screenWidth - 40} // Reduce width for margin
@@ -69,8 +69,8 @@ const ChartExample = () => {
         radius={32}
         chartConfig={{
           backgroundColor: '#e26a00',
-          backgroundGradientFrom: '#fb8c00',
-          backgroundGradientTo: '#ffa726',
+          backgroundGradientFrom: '#94B9F6',
+          backgroundGradientTo: '#2d518e',
           decimalPlaces: 2,
           color: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
           labelColor: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`
@@ -85,8 +85,8 @@ const ChartExample = () => {
         height={220}
         chartConfig={{
           backgroundColor: '#e26a00',
-          backgroundGradientFrom: '#fb8c00',
-          backgroundGradientTo: '#ffa726',
+          backgroundGradientFrom: '#94B9F6',
+          backgroundGradientTo: '#2d518e',
           decimalPlaces: 2,
           color: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
           labelColor: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
