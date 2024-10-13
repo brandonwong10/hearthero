@@ -7,42 +7,39 @@ const ChartExample = () => {
 
   // Bezier Line Chart Data
   const lineChartData = {
-    labels: ['January', 'February', 'March', 'April', 'May', 'June'],
+    labels: ['9:00am', '10:00am', '11:00am', '12:00pm', '1:00pm', '2:00pm'],
     datasets: [
       {
-        data: [20, 45, 28, 80, 99, 43],
+        data: [90, 125, 88, 78, 99, 80],
         strokeWidth: 2,
         color: (opacity = 1) => `rgba(230, 127, 185, ${opacity})` // optional
       }
     ],
-    legend: ['Rainy Days'] // optional
   };
 
   // Progress Ring Data
   const progressChartData = {
-    labels: ['Swim', 'Bike', 'Run'], // optional
-    data: [0.4, 0.6, 0.8]
+    labels: ['Walk', 'Jog', 'Bike'], // optional
+    data: [0.4, 0.6, 0.9]
   };
 
   // Bar Chart Data
   const barChartData = {
-    labels: ['January', 'February', 'March', 'April', 'May', 'June'],
+    labels: ['9:00am', '10:00am', '11:00am', '12:00pm', '1:00pm', '2:00pm'],
     datasets: [
       {
-        data: [20, 45, 28, 80, 99, 43]
+        data: [1, 4, 2, 8, 9, 3]
       }
     ]
   };
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
-      <Text style={styles.title}>Blood Pressure</Text>
+      <Text style={styles.title}>Blood Pressure Chart (bmp)</Text>
       <LineChart
         data={lineChartData}
         width={screenWidth - 40} // Reduce width for margin
         height={220}
-        yAxisLabel="$"
-        yAxisSuffix="k"
         chartConfig={{
           backgroundColor: '#e26a00',
           backgroundGradientFrom: '#94B9F6',
@@ -86,7 +83,6 @@ const ChartExample = () => {
         data={barChartData}
         width={screenWidth - 40} // Reduce width for margin
         height={220}
-        yAxisLabel="$"
         chartConfig={{
           backgroundColor: '#e26a00',
           backgroundGradientFrom: '#fb8c00',
