@@ -28,3 +28,9 @@ package-lock.json
 *.json
 *.json
 package-lock.json
+*.lock
+*.json
+*.json
+*.cjs
+package-lock.json
+*.json
