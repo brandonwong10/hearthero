@@ -43,9 +43,10 @@ const Explore = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
+    justifyContent: 'flex-start', // Align items to the top
     alignItems: 'center',
-    backgroundColor: '#94B9F6', // Darker background color
+    backgroundColor: '#F8F3F1', // Darker background color
+    paddingTop: 20, // Add padding to move the boxes down a bit
   },
   box: {
     width: screenWidth * 0.9, // 90% of screen width
