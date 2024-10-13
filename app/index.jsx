@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, StyleSheet, Dimensions } from 'react-native';
-import MapView, { Marker } from 'react-native-maps';
+import MapView, { Marker, Circle } from 'react-native-maps';
 
 const Home = () => {
   // Array of markers with coordinates and details
@@ -8,15 +8,16 @@ const Home = () => {
     {
       id: 1,
       coordinate: { latitude: 37.78825, longitude: -122.4324 },
-      title: 'Victim',
+      title: 'User',
       description: 'N/A',
       pinColor: 'blue'
     },
     {
       id: 2,
       coordinate: { latitude: 37.78925, longitude: -122.4354 },
-      title: 'Victim',
+      title: 'Grandma',
       description: 'High Risk',
+      radius: 1000,
       pinColor: 'red'
     },
     {
@@ -26,7 +27,13 @@ const Home = () => {
       description: 'N/A',
       pinColor: 'blue'
     },
-    // Add more markers as needed
+    {
+      id: 4,
+      coordinate: { latitude: 37.80025, longitude: -122.4384 },
+      title: 'User',
+      description: 'N/A',
+      pinColor: 'gray'
+    },
   ];
 
   return (
@@ -41,13 +48,22 @@ const Home = () => {
         }}
       >
         {markers.map(marker => (
-          <Marker
-            key={marker.id}
-            coordinate={marker.coordinate}
-            title={marker.title}
-            description={marker.description}
-            pinColor={marker.pinColor} // Customize marker color if needed
-          />
+          <React.Fragment key={marker.id}>
+            <Marker
+              coordinate={marker.coordinate}
+              title={marker.title}
+              description={marker.description}
+              pinColor={marker.pinColor} // Customize marker color if needed
+            />
+            {marker.radius && (
+              <Circle
+                center={marker.coordinate}
+                radius={marker.radius} // Radius in meters
+                strokeColor="rgba(255, 0, 0, 0.5)" // Circle border color
+                fillColor="rgba(255, 0, 0, 0.1)" // Circle fill color
+              />
+            )}
+          </React.Fragment>
         ))}
       </MapView>
     </View>
