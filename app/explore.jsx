@@ -1,5 +1,5 @@
-import { View, Text, ScrollView, Image, StyleSheet, TouchableOpacity } from 'react-native';
-import React from 'react';
+import { View, Text, ScrollView, Image, StyleSheet, TouchableOpacity, Animated } from 'react-native';
+import React, { useEffect, useState, useRef } from 'react';
 import { useNavigation } from '@react-navigation/native';
 
 const Explore = () => {
@@ -9,29 +9,49 @@ const Explore = () => {
     navigation.navigate('index'); // Navigate to the home tab
   };
 
-  const cards = [
+  const initialCards = [
     {
       image: require('../assets/images/grandma1.jpg'), 
       title: 'At-Risk Individual #1',
       subtitle: 'Risk Level: High',
-      progress: 0.7,
+      progress: new Animated.Value(0.7),
       riskColor: '#FF4C4C',
     },
     {
       image: require('../assets/images/grandpa1.png'),
       title: 'At-Risk Individual #2',
       subtitle: 'Risk Level: Medium',
-      progress: 0.5,
+      progress: new Animated.Value(0.5),
       riskColor: '#FFBF00',
     },
     {
       image: require('../assets/images/man1.png'),
       title: 'At-Risk Individual #3',
       subtitle: 'Risk Level: Low',
-      progress: 0.2,
+      progress: new Animated.Value(0.2),
       riskColor: '#4CAF50',
     },
   ];
+
+  const [cards, setCards] = useState(initialCards);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCards(prevCards => 
+        prevCards.map(card => {
+          const newProgress = Math.max(0, Math.min(1, card.progress._value + (Math.random() - 0.5) * 0.1));
+          Animated.timing(card.progress, {
+            toValue: newProgress,
+            duration: 1000,
+            useNativeDriver: false,
+          }).start();
+          return card;
+        })
+      );
+    }, 2000); // Update every 2 seconds
+
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
@@ -42,7 +62,10 @@ const Explore = () => {
             <Text style={styles.title}>{card.title}</Text>
             <Text style={styles.subtitle}>{card.subtitle}</Text>
             <View style={styles.progressBar}>
-              <View style={[styles.progress, { width: `${card.progress * 100}%`, backgroundColor: card.riskColor }]} />
+              <Animated.View style={[styles.progress, { width: card.progress.interpolate({
+                inputRange: [0, 1],
+                outputRange: ['0%', '100%']
+              }), backgroundColor: card.riskColor }]} />
             </View>
           </View>
         </TouchableOpacity>
