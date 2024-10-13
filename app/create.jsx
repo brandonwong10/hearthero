@@ -6,19 +6,19 @@ const Create = () => {
     {
       image: require('../assets/images/Heart-Beating-PNG-File.png'), 
       title: 'Pulse Monitor',
-      subtitle: 'Activity',
+      subtitle: 'Health Tracking',
       progress: 0.7,
     },
     {
       image: require('../assets/images/blood-pressure.png'),
       title: 'Blood Pressure',
-      subtitle: 'Resource',
+      subtitle: 'Health Tracking',
       progress: 0.5,
     },
     {
       image: require('../assets/images/siren.png'),
       title: 'Report Incident',
-      subtitle: 'Activity',
+      subtitle: 'Emergency',
       progress: 0.2,
     },
   ];
@@ -45,14 +45,14 @@ const styles = StyleSheet.create({
   container: {
     paddingHorizontal: 20,
     paddingVertical: 10,
-    background: '#F8F3F1',
+    backgroundColor: '#F8F3F1',
   },
   card: {
     flexDirection: 'row',
     backgroundColor: '#fff',
     borderRadius: 10,
     marginBottom: 20,
-    padding: 15,
+    padding: 35,
     shadowColor: '#000',
     shadowOpacity: 0.1,
     shadowRadius: 10,
